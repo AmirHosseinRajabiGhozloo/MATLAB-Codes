@@ -1,0 +1,28 @@
+function [fug_coefficient]=SW_fugacity(Z,x,A,B,b,b_mix,a,uu,u_mix,U,w,w_mix,W)
+
+for i = 1:numel(x)
+    a_mix=0;
+    for j = 1:numel(w)
+        a_mix = a_mix + x(i) * x(j) * ((a(i) * a(j))^0.5);
+    end
+    aa(i) = a_mix;
+end
+aa;
+a_mixture=sum(aa);
+
+ for i=1:numel(x)
+    summ=0;
+    for j=1:numel(x)
+        summ = summ + x(j)*((a(i)*a(j))^0.5);
+    end
+p1(i)=-log(Z-B) + (B* (b(i)/b_mix) ) / (Z-B);
+p2(i) =(A/(U^2 + 4*W^2)^0.5) .* ((2*summ /a_mixture)-(( (uu(i)/u_mix)*U^2 + 4*(w(i)/w_mix)*W^2 ) / (U^2 + 4*W^2))) .*log(  ( 2*Z + U-sqrt(U^2+4*W^2) ) / (2*Z+U+sqrt(U^2+4*W^2) )  )  ;
+p3(i)=A*(((2*(2*Z+U)*(w(i)/w_mix)*W^2 )+ ((U*Z-2*W^2)*(uu(i)/u_mix )*U )) /(  (Z^2+U*Z-W^2)*(U^2+4*W^2)  )  )   ;
+fug(i)=p1(i)+p2(i)-p3(i);
+phi(i)=exp(fug(i)) ;
+      
+end
+fug_coefficient=phi;
+
+end
+
