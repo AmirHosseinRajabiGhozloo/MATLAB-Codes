@@ -6,7 +6,7 @@ In this repository, I have used MATLAB to code some projects mostly related to f
 
 It is a project related to fluid mechanics and fluid flow calculations.
 The files contain MATLAB scripts and functions.
-These files are part of a larger project or calculation tool for analyzing pressure loss, velocities, and other parameters in drilling fluid flow scenarios.
+These files are part of a project for analyzing pressure loss, velocities, and other parameters in drilling fluid flow scenarios.
 The aim of this project is to develop computational models or algorithms for simulating fluid flow behavior in a well and its annular geometries
 , considering different flow regimes and rheological properties of the fluid.
 
